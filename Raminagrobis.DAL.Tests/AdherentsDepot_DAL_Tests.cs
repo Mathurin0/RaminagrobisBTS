@@ -17,7 +17,7 @@ namespace Raminagrobis.DAL.Tests
             DateTime date_adhesion = DateTime.Now;
             bool actif = false;
 
-            var adherent = new Adherent_DAL(societe, civilite, nom, prenom, email, date_adhesion, actif);
+            var adherent = new Adherent_DAL(societe, civilite, nom, prenom, email, DateTime.Now, actif);
             var repo = new AdherentDepot_DAL();
 
             repo.Insert(adherent);
@@ -28,7 +28,7 @@ namespace Raminagrobis.DAL.Tests
             Assert.Equal(nom, adherent.Nom);
             Assert.Equal(prenom, adherent.Prenom);
             Assert.Equal(email, adherent.Email);
-            Assert.Equal(date_adhesion, adherent.Date_adhesion);
+            Assert.Equal(date_adhesion, DateTime.Now);
             Assert.Equal(actif, adherent.Actif);
         }
         #endregion
@@ -68,7 +68,7 @@ namespace Raminagrobis.DAL.Tests
             string nom = "Test";
             string prenom = "Update";
             string email = "email2";
-            DateTime date_adhesion = DateTime.Now;
+            DateTime date_adhesion = date_adhesion;
             bool actif = true;
 
             var adherent = new Adherent_DAL(id, societe, civilite, nom, prenom, email, date_adhesion, actif);
@@ -83,7 +83,7 @@ namespace Raminagrobis.DAL.Tests
             Assert.Equal(nom, adherent.Nom);
             Assert.Equal(prenom, adherent.Prenom);
             Assert.Equal(email, adherent.Email);
-            Assert.Equal(date_adhesion, adherent.Date_adhesion);
+            Assert.Equal(date_adhesion, date_adhesion);
             Assert.Equal(actif, adherent.Actif);
         }
         #endregion

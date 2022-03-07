@@ -15,14 +15,16 @@ namespace Raminagrobis.DAL.Depot
         {
             CreerConnexionEtCommande();
 
-            commande.CommandText = "SELECT prix FROM Propositions";
+            commande.CommandText = "SELECT id_ligne_global, id_fournisseur, prix FROM Propositions";
             var reader = commande.ExecuteReader();
 
             var listePropositions = new List<Propositions_DAL>();
 
             while (reader.Read())
             {
-                var commande = new Propositions_DAL(reader.GetInt16(0));
+                var commande = new Propositions_DAL(reader.GetInt32(0),
+                                            reader.GetInt32(1),
+                                            reader.GetInt16(2));
 
                 listePropositions.Add(commande);
             }
